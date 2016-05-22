@@ -4,14 +4,14 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new 
+    @user = User.new
   end
   
   def create
     @user = User.new(user_params)
-    if @user.save 
+    if @user.save
       redirect_to users_path, notice: "User created"
-    else 
+    else
       render :new
     end
   end
@@ -22,9 +22,9 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params) 
+    if @user.update(user_params)
       redirect_to users_path, notice: "User updated"
-    else 
+    else
       render :edit
     end
   end
@@ -38,5 +38,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :age)
   end
-  
 end
